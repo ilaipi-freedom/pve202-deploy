@@ -1,0 +1,33 @@
+name: Refresh ssl certs
+
+on:
+  schedule:
+    # 每月5号 凌晨 3:33 执行
+    - cron:  '33 3 5 * *'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    -
+      name: Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:ci
+      
+    -
+      name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SSH_HOST_202 }}
+        username: ${{ secrets.SSH_USERNAME_202 }}
+        key: ${{ secrets.SSH_KEY_202 }}
+        port: ${{ secrets.SSH_PORT_202 }}
+        script: |
+          docker exec ${{ vars.DOCKER_CONTAINER_NAME }} nginx -s reload
