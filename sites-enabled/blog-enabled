@@ -13,7 +13,7 @@ server {
     listen      443 ssl;
     server_name ilaipi.com;
 
-    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
     ssl_certificate      /data/acme/out/installed/ilaipi.com/fullchain;
     ssl_certificate_key  /data/acme/out/installed/ilaipi.com/key;
 
