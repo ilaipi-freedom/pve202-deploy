@@ -14,4 +14,7 @@ server {
     location / {
         proxy_pass http://192.168.5.29:6880;
     }
+    location /jsonrpc {
+        proxy_pass http://192.168.5.29:6800;
+    }
 }
