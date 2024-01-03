@@ -54,4 +54,5 @@ jobs:
             -p 443:443 \
             -v /home/billy/acme/out:/data/acme/out \
             --link blog-wp \
+            --link freedom_front \
             ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_HUB_SPACE }}/${{ vars.DOCKER_IMAGE_NAME }}
