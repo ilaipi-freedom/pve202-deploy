@@ -1,0 +1,17 @@
+server {
+    listen       80;
+    server_name aria.ilaipi.com;
+    return 301 https://aria.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name aria.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass https://192.168.5.29:6880;
+    }
+}
