@@ -1,0 +1,17 @@
+server {
+    listen       80;
+    server_name pve.ilaipi.com;
+    return 301 https://pve.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name pve.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass https://192.168.5.254:8006;
+    }
+}
