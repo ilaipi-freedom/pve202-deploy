@@ -12,6 +12,6 @@ server {
     include /etc/nginx/snippets/proxy_params;
 
     location / {
-        proxy_pass https://freedom_front:80;
+        proxy_pass http://freedom_front:80;
     }
 }
