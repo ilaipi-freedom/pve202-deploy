@@ -1,0 +1,17 @@
+server {
+    listen       80;
+    server_name music.ilaipi.com;
+    return 301 https://music.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name music.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass http://192.168.5.29:37100;
+    }
+}
