@@ -23,6 +23,8 @@ server {
     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
     ssl_prefer_server_ciphers  on;
 
+    client_max_body_size 20m;
+
     location / {
         proxy_pass http://blog-wp:80;
     }
@@ -34,6 +36,8 @@ server {
 
     include /etc/nginx/snippets/ssl_params;
     include /etc/nginx/snippets/proxy_params;
+
+    client_max_body_size 20m;
 
     location / {
         proxy_pass http://blog-wp:80;
