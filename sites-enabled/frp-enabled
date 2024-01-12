@@ -1,0 +1,17 @@
+server {
+    listen       80;
+    server_name frp.ilaipi.com;
+    return 301 https://frp.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name frp.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass http://81.68.213.104:32919;
+    }
+}
