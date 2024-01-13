@@ -18,13 +18,13 @@ server {
 
 server {
     listen       80;
-    server_name prinexus3-repo.ilaipi.com;
-    return 301 https://prinexus3-repo.ilaipi.com$request_uri;
+    server_name prinexus3docker.ilaipi.com;
+    return 301 https://prinexus3docker.ilaipi.com$request_uri;
 }
 
 server {
     listen      443 ssl;
-    server_name prinexus3-repo.ilaipi.com;
+    server_name prinexus3docker.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;
     include /etc/nginx/snippets/proxy_params;
