@@ -15,3 +15,21 @@ server {
         proxy_pass http://192.168.5.252:30111;
     }
 }
+
+server {
+    listen       80;
+    server_name prinexus3-repo.ilaipi.com;
+    return 301 https://prinexus3-repo.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name prinexus3-repo.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass http://192.168.5.252:30112;
+    }
+}
