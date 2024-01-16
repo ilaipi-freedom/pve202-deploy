@@ -10,7 +10,7 @@ server {
 }
 
 server {
-    listen      443 ssl;
+    listen      443 ssl proxy_protocol;
     server_name ilaipi.com;
 
     real_ip_header proxy_protocol;
@@ -33,7 +33,7 @@ server {
 }
 
 server {
-    listen      443 ssl;
+    listen      443 ssl proxy_protocol;
     server_name www.ilaipi.com;
 
     real_ip_header proxy_protocol;
