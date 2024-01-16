@@ -13,6 +13,8 @@ server {
     listen      443 ssl;
     server_name ilaipi.com;
 
+    real_ip_header proxy_protocol;
+    real_ip_recursive on;
     include /etc/nginx/snippets/proxy_params;
     ssl_certificate      /data/acme/out/installed/ilaipi.com/fullchain;
     ssl_certificate_key  /data/acme/out/installed/ilaipi.com/key;
@@ -34,6 +36,8 @@ server {
     listen      443 ssl;
     server_name www.ilaipi.com;
 
+    real_ip_header proxy_protocol;
+    real_ip_recursive on;
     include /etc/nginx/snippets/ssl_params;
     include /etc/nginx/snippets/proxy_params;
 
