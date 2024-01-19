@@ -1,0 +1,8 @@
+set_real_ip_from 0.0.0.0/0;
+# set_real_ip_from 172.19.0.0/21;
+# set_real_ip_from 81.68.213.104;
+
+real_ip_header proxy_protocol;
+
+# Nginx 将递归查找真实 IP 地址，直到找到不是内部地址的 IP
+real_ip_recursive on;

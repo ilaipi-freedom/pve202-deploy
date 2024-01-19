@@ -9,6 +9,7 @@ server {
     server_name music.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_protocol_params;
     include /etc/nginx/snippets/proxy_params;
 
     location / {
