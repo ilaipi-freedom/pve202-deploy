@@ -1,0 +1,25 @@
+server {
+    listen       80;
+    server_name siyuan.ilaipi.com;
+    return 301 https://siyuan.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl proxy_protocol;
+    server_name siyuan.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_protocol_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass https://192.168.5.252:30117;
+    }
+
+    location /ws {
+        proxy_pass https://192.168.5.252:30117;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
