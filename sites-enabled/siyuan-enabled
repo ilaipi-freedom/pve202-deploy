@@ -13,11 +13,11 @@ server {
     include /etc/nginx/snippets/proxy_params;
 
     location / {
-        proxy_pass https://192.168.5.252:30117;
+        proxy_pass http://siyuan:6806;
     }
 
     location /ws {
-        proxy_pass https://192.168.5.252:30117;
+        proxy_pass http://siyuan:6806;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
