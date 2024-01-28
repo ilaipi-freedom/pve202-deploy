@@ -16,7 +16,7 @@ server {
         proxy_pass http://vbendemo-frontend:80;
     }
     
-    location /fdapi {
+    location /vbenapi {
         proxy_pass http://vbendemo-backend_admin:6000;
     }
 }
