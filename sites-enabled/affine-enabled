@@ -1,3 +1,7 @@
+upstream affine {
+    server affine:3010;
+}
+
 server {
     listen       80;
     server_name affine.ilaipi.com;
@@ -13,6 +17,13 @@ server {
     include /etc/nginx/snippets/proxy_params;
 
     location / {
-        proxy_pass http://affine:3010;
+        proxy_pass http://affine;
+    }
+
+    location /socket.io/ {
+        proxy_pass http://affine;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
     }
 }
