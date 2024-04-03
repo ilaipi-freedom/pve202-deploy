@@ -5,7 +5,8 @@ server {
 }
 
 server {
-    listen      443 ssl proxy_protocol;
+    listen      443 ssl;
+    listen      443 proxy_protocol;
     server_name prinexus3.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;
@@ -26,7 +27,8 @@ server {
 }
 
 server {
-    listen      443 ssl proxy_protocol;
+    listen      443 ssl;
+    listen      443 proxy_protocol;
     server_name prinexus3docker.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;
