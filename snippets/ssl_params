@@ -1,5 +1,5 @@
-ssl_certificate      /data/acme/out/installed/ilaipi.com/fullchain;
-ssl_certificate_key  /data/acme/out/installed/ilaipi.com/key;
+ssl_certificate      /data/acme/out/installed/ssl/fullchain;
+ssl_certificate_key  /data/acme/out/installed/ssl/key;
 
 ssl_session_cache    shared:SSL:1m;
 ssl_session_timeout  5m;
