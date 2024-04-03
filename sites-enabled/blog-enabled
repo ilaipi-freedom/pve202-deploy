@@ -15,7 +15,7 @@ server {
 
     include /etc/nginx/snippets/proxy_protocol_params;
     include /etc/nginx/snippets/proxy_params;
-    include /etc/nginx/snippets/proxy_params;
+    include /etc/nginx/snippets/ssl_params;
 
     location / {
         proxy_pass http://blog-wp:80;
@@ -26,8 +26,9 @@ server {
     listen      443 ssl proxy_protocol;
     server_name www.ilaipi.com;
 
-    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_protocol_params;
     include /etc/nginx/snippets/proxy_params;
+    include /etc/nginx/snippets/ssl_params;
 
     client_max_body_size 20m;
 
