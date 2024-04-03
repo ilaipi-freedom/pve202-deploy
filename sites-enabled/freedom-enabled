@@ -5,7 +5,7 @@ server {
 }
 
 server {
-    listen      443 ssl proxy_protocol;
+    listen      443 ssl;
     server_name freedom.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;
