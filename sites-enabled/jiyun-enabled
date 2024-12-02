@@ -1,0 +1,22 @@
+server {
+    listen       80;
+    server_name jiyun.ilaipi.com;
+    return 301 https://jiyun.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl proxy_protocol;
+    server_name jiyun.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_protocol_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location / {
+        proxy_pass http://jiyun_frontend_admin-dev:80;
+    }
+    
+    location /lhgjapi {
+        proxy_pass http://jiyun_backend_admin-dev:6000;
+    }
+}
