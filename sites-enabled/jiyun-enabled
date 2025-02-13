@@ -20,3 +20,47 @@ server {
         proxy_pass http://jiyun_backend_admin-dev:6000;
     }
 }
+
+server {
+    listen       80;
+    server_name jiyunweappdev.ilaipi.com;
+    return 301 https://jiyunweappdev.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name jiyunweappdev.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location /lhgjapi {
+        proxy_pass http://backend_weapp-dev:6000;
+    }
+
+    # 对于需要转发到 openapi 服务的请求，需要特殊处理
+    # 在微信支付生成 notifyUrl 时，从请求头中取到的 host 是小程序这边的请求域名
+    # 加上特殊的前缀 /openapi 标识，代码中不需要做处理，在nginx这里完成转发即可
+    location /lhgjapi/openapi {
+        rewrite ^/lhgjapi/openapi/(.*) /lhgjapi/$1 break;
+        proxy_pass http://backend_openapi-dev:6000;
+    }
+}
+
+server {
+    listen       80;
+    server_name jiyunopenapidev.ilaipi.com;
+    return 301 https://jiyunopenapidev.ilaipi.com$request_uri;
+}
+
+server {
+    listen      443 ssl;
+    server_name jiyunopenapidev.ilaipi.com;
+
+    include /etc/nginx/snippets/ssl_params;
+    include /etc/nginx/snippets/proxy_params;
+
+    location /lhgjapi {
+        proxy_pass http://backend_openapi-dev:6000;
+    }
+}
