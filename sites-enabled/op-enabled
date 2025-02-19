@@ -1,11 +1,5 @@
 server {
-    listen       80;
-    server_name op.ilaipi.com;
-    return 301 https://op.ilaipi.com$request_uri;
-}
-
-server {
-    listen      443 ssl proxy_protocol;
+    listen 80 proxy_protocol;
     server_name op.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;

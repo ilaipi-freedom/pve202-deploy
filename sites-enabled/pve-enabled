@@ -1,11 +1,5 @@
 server {
-    listen       80;
-    server_name pve.ilaipi.com;
-    return 301 https://pve.ilaipi.com$request_uri;
-}
-
-server {
-    listen      443 ssl proxy_protocol;
+    listen 80 proxy_protocol;
     server_name pve.ilaipi.com;
 
     include /etc/nginx/snippets/ssl_params;
