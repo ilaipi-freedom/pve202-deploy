@@ -1,14 +1,7 @@
 server {
     listen       80;
     server_name aria.ilaipi.com;
-    return 301 https://aria.ilaipi.com$request_uri;
-}
 
-server {
-    listen      443 ssl proxy_protocol;
-    server_name aria.ilaipi.com;
-
-    include /etc/nginx/snippets/ssl_params;
     include /etc/nginx/snippets/proxy_protocol_params;
     include /etc/nginx/snippets/proxy_params;
 
