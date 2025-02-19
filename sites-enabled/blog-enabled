@@ -1,16 +1,9 @@
 server {
     listen 80 proxy_protocol;
     server_name ilaipi.com;
+
     include /etc/nginx/snippets/proxy_protocol_params;
     include /etc/nginx/snippets/proxy_params;
-    ssl_certificate      /data/acme/out/installed/main/fullchain;
-    ssl_certificate_key  /data/acme/out/installed/main/key;
-
-    ssl_session_cache    shared:SSL:1m;
-    ssl_session_timeout  5m;
-
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-    ssl_prefer_server_ciphers  on;
 
     location / {
         proxy_pass http://blog-wp:80;
@@ -23,7 +16,6 @@ server {
 
     include /etc/nginx/snippets/proxy_protocol_params;
     include /etc/nginx/snippets/proxy_params;
-    include /etc/nginx/snippets/ssl_params;
 
     client_max_body_size 20m;
 
