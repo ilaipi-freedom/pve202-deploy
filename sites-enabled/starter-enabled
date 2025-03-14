@@ -9,7 +9,7 @@ server {
         proxy_pass http://starter_admin_front:80;
     }
     
-    location /fdapi {
+    location /veapi {
         proxy_pass http://starter_admin_backend:6000;
     }
 }
